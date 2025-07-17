@@ -88,7 +88,7 @@ const DataTable = ({
                 <TableHead className="w-12">
                   <Checkbox
                     checked={allSelected}
-                    indeterminate={someSelected && !allSelected}
+                    {...(someSelected && !allSelected ? { "data-indeterminate": true } : {})}
                     onCheckedChange={handleSelectAll}
                   />
                 </TableHead>

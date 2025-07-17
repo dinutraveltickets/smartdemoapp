@@ -4,6 +4,7 @@ import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
 import Home from '../pages/Home';
 import RateMatrix from '../pages/RateMatrix';
+import ClientSpreadTemplate from '../pages/ClientSpreadTemplate';
 
 // Protected Route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -58,6 +59,14 @@ const AppRoutes = () => {
         <ProtectedRoute>
           <Dashboard>
             <RateMatrix />
+          </Dashboard>
+        </ProtectedRoute>
+      </Route>
+
+      <Route path="/dashboard/reports/clientspread">
+        <ProtectedRoute>
+          <Dashboard>
+            <ClientSpreadTemplate />
           </Dashboard>
         </ProtectedRoute>
       </Route>

@@ -58,7 +58,13 @@ Preferred communication style: Simple, everyday language.
 - `/api/login` - User authentication
 - `/api/dashboard/stats` - Dashboard statistics
 - `/api/dashboard/activity` - Recent activity data
-- Rate management endpoints (implied by schema)
+- `/api/rates` - Rate management endpoints (CRUD operations)
+
+### Page Structure
+- **Login Page**: Smart modern design with glassmorphism effects and gradient backgrounds
+- **Dashboard Home**: Statistics cards, activity feed, and chart components
+- **Rate Matrix**: Data table with filtering, pagination, and CRUD operations
+- **Client Spread Template**: Complex form layout with product search, margins setup, and tenor management table
 
 ## Data Flow
 

@@ -76,6 +76,15 @@ const TopNavigation = () => {
                   Rate Matrix
                 </Link>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link 
+                  to="/dashboard/reports/clientspread"
+                  className="flex items-center"
+                >
+                  <BarChart3 className="mr-2 h-4 w-4" />
+                  Client Spread Template
+                </Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </nav>
@@ -149,6 +158,19 @@ const TopNavigation = () => {
             >
               <BarChart3 className="mr-2 h-4 w-4" />
               Rate Matrix
+            </Link>
+            <Link 
+              to="/dashboard/reports/clientspread"
+              className={cn(
+                "flex items-center font-medium",
+                isActive('/dashboard/reports/clientspread') 
+                  ? "text-primary-600" 
+                  : "text-slate-600"
+              )}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <BarChart3 className="mr-2 h-4 w-4" />
+              Client Spread Template
             </Link>
           </div>
         </div>
