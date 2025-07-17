@@ -15,8 +15,8 @@ const RateMatrix = () => {
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     search: '',
-    category: '',
-    status: '',
+    category: 'all',
+    status: 'all',
   });
 
   useEffect(() => {
@@ -61,14 +61,14 @@ const RateMatrix = () => {
   };
 
   const categoryOptions = [
-    { value: '', label: 'All Categories' },
+    { value: 'all', label: 'All Categories' },
     { value: 'standard', label: 'Standard' },
     { value: 'premium', label: 'Premium' },
     { value: 'enterprise', label: 'Enterprise' },
   ];
 
   const statusOptions = [
-    { value: '', label: 'All Status' },
+    { value: 'all', label: 'All Status' },
     { value: 'active', label: 'Active' },
     { value: 'inactive', label: 'Inactive' },
     { value: 'pending', label: 'Pending' },
