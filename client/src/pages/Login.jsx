@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'wouter';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -10,7 +10,7 @@ import api from '../services/api';
 import { BarChart3 } from 'lucide-react';
 
 const Login = () => {
-  const navigate = useNavigate();
+  const [, setLocation] = useLocation();
   const { login } = useAuth();
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
@@ -73,7 +73,7 @@ const Login = () => {
         variant: "default",
       });
       
-      navigate('/dashboard/home');
+      setLocation('/dashboard/home');
     } catch (error) {
       toast({
         title: "Login Failed",

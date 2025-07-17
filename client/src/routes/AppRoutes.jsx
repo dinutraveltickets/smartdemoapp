@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'wouter';
 import { useAuth } from '../hooks/useAuth.jsx';
 import Login from '../pages/Login';
 import Dashboard from '../pages/Dashboard';
@@ -17,7 +17,7 @@ const ProtectedRoute = ({ children }) => {
     );
   }
 
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  return isAuthenticated ? children : <Redirect to="/login" />;
 };
 
 // Public Route wrapper (redirects authenticated users to dashboard)
@@ -32,42 +32,46 @@ const PublicRoute = ({ children }) => {
     );
   }
 
-  return isAuthenticated ? <Navigate to="/dashboard/home" replace /> : children;
+  return isAuthenticated ? <Redirect to="/dashboard/home" /> : children;
 };
 
 const AppRoutes = () => {
   return (
-    <Routes>
+    <Switch>
       {/* Public Routes */}
-      <Route 
-        path="/login" 
-        element={
-          <PublicRoute>
-            <Login />
-          </PublicRoute>
-        } 
-      />
+      <Route path="/login">
+        <PublicRoute>
+          <Login />
+        </PublicRoute>
+      </Route>
 
       {/* Protected Dashboard Routes */}
-      <Route 
-        path="/dashboard" 
-        element={
-          <ProtectedRoute>
-            <Dashboard />
-          </ProtectedRoute>
-        }
-      >
-        <Route path="home" element={<Home />} />
-        <Route path="reports/ratematrix" element={<RateMatrix />} />
-        <Route index element={<Navigate to="home" replace />} />
+      <Route path="/dashboard/home">
+        <ProtectedRoute>
+          <Dashboard>
+            <Home />
+          </Dashboard>
+        </ProtectedRoute>
+      </Route>
+
+      <Route path="/dashboard/reports/ratematrix">
+        <ProtectedRoute>
+          <Dashboard>
+            <RateMatrix />
+          </Dashboard>
+        </ProtectedRoute>
       </Route>
 
       {/* Root redirect */}
-      <Route path="/" element={<Navigate to="/dashboard/home" replace />} />
+      <Route path="/">
+        <Redirect to="/dashboard/home" />
+      </Route>
 
-      {/* Catch all - redirect to login */}
-      <Route path="*" element={<Navigate to="/login" replace />} />
-    </Routes>
+      {/* Dashboard base redirect */}
+      <Route path="/dashboard">
+        <Redirect to="/dashboard/home" />
+      </Route>
+    </Switch>
   );
 };
 

@@ -57,3 +57,33 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+@layer utilities {
+  .bg-primary-500 {
+    background-color: hsl(207, 90%, 54%);
+  }
+  
+  .bg-primary-600 {
+    background-color: hsl(207, 90%, 48%);
+  }
+  
+  .text-primary-500 {
+    color: hsl(207, 90%, 54%);
+  }
+  
+  .text-primary-600 {
+    color: hsl(207, 90%, 48%);
+  }
+  
+  .border-primary-500 {
+    border-color: hsl(207, 90%, 54%);
+  }
+  
+  .hover\:bg-primary-600:hover {
+    background-color: hsl(207, 90%, 48%);
+  }
+  
+  .hover\:text-primary-700:hover {
+    color: hsl(207, 90%, 42%);
+  }
+}
