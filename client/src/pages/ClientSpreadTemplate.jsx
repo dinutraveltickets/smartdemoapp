@@ -30,14 +30,14 @@ const ClientSpreadTemplate = () => {
   });
 
   const [tenorData, setTenorData] = useState([
-    { id: 1, tenor: 'Overnight', amountRange: '999,999,999', rate: '0.269', percentage: '%', checked: false },
-    { id: 2, tenor: '1 Week', amountRange: '999,999,999', rate: '0.358', percentage: '%', checked: false },
-    { id: 3, tenor: '2 Week', amountRange: '999,999,999', rate: '0.458', percentage: '%', checked: false },
-    { id: 4, tenor: '3 Week', amountRange: '999,999,999', rate: '0.691', percentage: '%', checked: false },
-    { id: 5, tenor: '1 Month', amountRange: '999,999,999', rate: '0.751', percentage: '%', checked: false },
-    { id: 6, tenor: '45 Days', amountRange: '999,999,999', rate: '0.845', percentage: '%', checked: false },
-    { id: 7, tenor: '2 Month', amountRange: '999,999,999', rate: '0.975', percentage: '%', checked: false },
-    { id: 8, tenor: '4 Month', amountRange: '999,999,999', rate: '1.191', percentage: '%', checked: false }
+    { id: 1, tenor: 'Overnight', amountRange: '999,999,999', rate: '0.269', triggerRate: '0.000', percentage: '%', checked: false },
+    { id: 2, tenor: '1 Week', amountRange: '999,999,999', rate: '0.358', triggerRate: '0.000', percentage: '%', checked: false },
+    { id: 3, tenor: '2 Week', amountRange: '999,999,999', rate: '0.458', triggerRate: '0.000', percentage: '%', checked: false },
+    { id: 4, tenor: '3 Week', amountRange: '999,999,999', rate: '0.691', triggerRate: '0.000', percentage: '%', checked: false },
+    { id: 5, tenor: '1 Month', amountRange: '999,999,999', rate: '0.751', triggerRate: '0.000', percentage: '%', checked: false },
+    { id: 6, tenor: '45 Days', amountRange: '999,999,999', rate: '0.845', triggerRate: '0.000', percentage: '%', checked: false },
+    { id: 7, tenor: '2 Month', amountRange: '999,999,999', rate: '0.975', triggerRate: '0.000', percentage: '%', checked: false },
+    { id: 8, tenor: '4 Month', amountRange: '999,999,999', rate: '1.191', triggerRate: '0.000', percentage: '%', checked: false }
   ]);
 
   const handleInputChange = (field, value) => {
@@ -59,6 +59,14 @@ const ClientSpreadTemplate = () => {
     setTenorData(prev => 
       prev.map(item => 
         item.id === id ? { ...item, rate } : item
+      )
+    );
+  };
+
+  const handleTenorTriggerRateChange = (id, triggerRate) => {
+    setTenorData(prev => 
+      prev.map(item => 
+        item.id === id ? { ...item, triggerRate } : item
       )
     );
   };
@@ -328,7 +336,8 @@ const ClientSpreadTemplate = () => {
                       <div className="flex items-center">
                         <input
                           type="text"
-                          value="0.000"
+                          value={item.triggerRate}
+                          onChange={(e) => handleTenorTriggerRateChange(item.id, e.target.value)}
                           className="w-20 px-2 py-1 text-sm border border-slate-300 rounded"
                         />
                         <span className="ml-1 text-sm text-slate-600">%</span>
