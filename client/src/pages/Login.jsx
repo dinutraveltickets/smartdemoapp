@@ -69,7 +69,7 @@ const Login = () => {
       
       toast({
         title: "Success",
-        description: "Login successful! Welcome back.",
+        description: "Login successful! Demo.",
         variant: "default",
       });
       
@@ -106,7 +106,7 @@ const Login = () => {
                   <BarChart3 className="text-white text-2xl" />
                 </div>
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-3">
-                  Welcome Back
+                  Demo
                 </h1>
                 <p className="text-slate-600 text-lg">Sign in to your dashboard account</p>
               </div>

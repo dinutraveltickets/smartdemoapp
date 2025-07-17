@@ -119,7 +119,7 @@ const Home = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-semibold text-slate-900">Dashboard Home</h1>
-          <p className="text-slate-600">Welcome back! Here's what's happening today.</p>
+          <p className="text-slate-600">Demo! Here's what's happening today.</p>
         </div>
         <Button className="bg-primary-500 hover:bg-primary-600 text-white">
           <Plus className="mr-2 h-4 w-4" />
