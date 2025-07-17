@@ -86,21 +86,32 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-slate-50 to-slate-100">
-      <div className="w-full max-w-md">
-        {/* Login Card */}
-        <Card className="shadow-lg border border-slate-200">
-          <CardContent className="p-8">
-            {/* Header */}
-            <div className="text-center mb-8">
-              <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                <BarChart3 className="text-white text-xl" />
-              </div>
-              <h1 className="text-2xl font-semibold text-slate-900 mb-2">Welcome Back</h1>
-              <p className="text-slate-600">Sign in to your dashboard account</p>
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+      {/* Background Design Elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-0 w-72 h-72 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 right-0 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
 
-            {/* Login Form */}
+      {/* Main Content */}
+      <div className="relative z-10 min-h-screen flex items-center justify-end p-6 lg:p-12">
+        <div className="w-full max-w-md lg:mr-16">
+          {/* Login Card */}
+          <Card className="backdrop-blur-sm bg-white/80 shadow-2xl border border-white/20 rounded-2xl overflow-hidden">
+            <CardContent className="p-8 lg:p-10">
+              {/* Header */}
+              <div className="text-center mb-8">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                  <BarChart3 className="text-white text-2xl" />
+                </div>
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-3">
+                  Welcome Back
+                </h1>
+                <p className="text-slate-600 text-lg">Sign in to your dashboard account</p>
+              </div>
+
+              {/* Login Form */}
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Username Field */}
               <Textbox
@@ -129,10 +140,17 @@ const Login = () => {
               {/* Login Button */}
               <Button 
                 type="submit" 
-                className="w-full bg-primary-500 hover:bg-primary-600 text-white font-medium py-2.5 transition-colors"
+                className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 rounded-xl transition-all duration-200 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
                 disabled={loading}
               >
-                {loading ? 'Signing In...' : 'Sign In'}
+                {loading ? (
+                  <div className="flex items-center justify-center">
+                    <div className="animate-spin w-5 h-5 border-2 border-white border-t-transparent rounded-full mr-2"></div>
+                    Signing In...
+                  </div>
+                ) : (
+                  'Sign In'
+                )}
               </Button>
 
               {/* Additional Options */}
@@ -152,12 +170,13 @@ const Login = () => {
                 </button>
               </div>
             </form>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
-        {/* Footer */}
-        <div className="text-center mt-6 text-sm text-slate-600">
-          <p>Protected by enterprise security standards</p>
+          {/* Footer */}
+          <div className="text-center mt-6 text-sm text-slate-600">
+            <p>Protected by enterprise security standards</p>
+          </div>
         </div>
       </div>
     </div>
